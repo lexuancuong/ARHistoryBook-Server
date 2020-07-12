@@ -1,7 +1,7 @@
 let db = require("../configs/db");
 let bcrypt = require("bcrypt");
 let { normaliseString } = require("../configs/type");
-let { findIDByUsername } = require("../account/account.model")
+let { findIDByUsername } = require("../Account/account.model")
 let selectByID = (user_id) => {
     return db
     .query("SELECT * FROM users where user_id = $1", [user_id])
