@@ -1,6 +1,6 @@
 let db = require("../configs/db");
 let { normaliseString } = require("../configs/type");
-let { findIDByUsername } = require("../account/account.model");
+let { findIDByUsername } = require("../Account/account.model");
 let select = (accrit_id,achv_id) => {
     return db
     .query("SELECT * FROM AchievementCriterionAchievement where accrit_id = $1 AND achv_id = $2; ", [accrit_id,achv_id])

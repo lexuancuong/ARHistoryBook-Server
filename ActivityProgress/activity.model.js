@@ -1,6 +1,6 @@
 let db = require("../configs/db");
 let { normaliseString } = require("../configs/type");
-let { findIDByUsername } = require("../account/account.model");
+let { findIDByUsername } = require("../Account/account.model");
 let selectByID = (id) => {
     return db
     .query("SELECT * FROM activityprogress where id = $1", [id])

@@ -1,6 +1,6 @@
 let db = require("../configs/db");
 let { normaliseString } = require("../configs/type");
-let { findIDByUsername } = require("../account/account.model");
+let { findIDByUsername } = require("../Account/account.model");
 let select = (user_id,sec_id) => {
     return db
     .query("SELECT * FROM sectionstatus where user_id = $1 AND sec_id = $2", [user_id,sec_id])
