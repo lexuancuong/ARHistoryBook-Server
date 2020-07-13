@@ -65,9 +65,7 @@ The APIs are deployed to https://arhistory.herokuapp.com/
 ```
 <hr>
 
-### Another Table \
-
-<br>
+### Another Tables
 
 ## Account Achievement Criterion
 
