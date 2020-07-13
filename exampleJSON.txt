@@ -1,4 +1,4 @@
-DATABASE have been accomplished;
+DATABASE have been accomplished:
     account
     achievement 
     achievementaccount 
@@ -19,59 +19,3 @@ DATABASE have been accomplished;
     sectionprogress     
     sectionstatus       
     users
-
-ACTIVITY DATA
-GET http://localhost:3000/api/activity-data/Act0000001
-
-POST http://localhost:3000/api/activity-data/create
-{
-    "id" : "Act0000008",
-    "type" : 0,
-    "header" : "Kho Bau",
-    "is_required" :  "t",
-    "max_score" : 150,
-    "sec_id" : "Sec0000002"
-}
-
-
-POST http://localhost:3000/api/activity-data/update
-{
-    "id" : "Act0000088",
-    "type" : 0,
-    "header" : "Kho Bau XXX",
-    "is_required" :  "t",
-    "max_score" : 150,
-    "sec_id" : "Sec0000002"
-}
-
-SECTION DATA
-http://localhost:3000/api/section-data/create
-{
-    "id" : "Sec0000005",
-    "name" : "Di tim kho bau",
-    "lesson_id" : "Lsn000002"
-}
-     
-
-SECTION LINK
-http://localhost:3000/api/section-link/create
-{
-    "sec1_id" : "Sec0000007",
-    "sec2_id" : "Sec0000008"
-}
-
-LESSON
-http://localhost:3000/api/lesson/update
-{
-    "id" : "Sec0000002",
-    "name" : "Sec0000009",
-    "chap_id" : "asdasdasd"
-}
-
-CHAPTER
-http://localhost:3000/api/chapter/update
-{
-    "id" : "Sec0000003",
-    "name" : "Sec0000010",
-    "part_id" : "Sec0000010"
-}
