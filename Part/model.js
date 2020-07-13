@@ -12,6 +12,19 @@ let select = (sec_id) => {
     });
 }
 
+let remove = (sec_id) => {
+  return db
+  .query("SELECT * FROM part where id = $1", [sec_id])
+  .then(function({rows}) {
+    return {"status" : "Success"};
+
+  })
+  .catch((err) => {
+    throw { http: 400, code: "INVALID_ID", message: "Lesso's Info of this ID does not exsist"};
+  });
+}
+
+
 //Create a new User Row
 function create(patch) {
   let modifier = Object.values(patch)
@@ -49,5 +62,6 @@ function update(patch) {
 module.exports = {
     select,
     create,
-    update
+    update,
+    remove
   };

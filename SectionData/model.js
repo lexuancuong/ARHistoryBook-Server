@@ -1,5 +1,6 @@
 let db = require("../configs/db");
 let { normaliseString } = require("../configs/type");
+
 let select = (sec_id) => {
     return db
     .query("SELECT * FROM sectiondata where id = $1", [sec_id])
@@ -11,6 +12,19 @@ let select = (sec_id) => {
       throw { http: 400, code: "INVALID_ID", message: "User's Info of this ID does not exsist"};
     });
 }
+
+let remove = (sec_id) => {
+  return db
+  .query("DELETE FROM sectiondata where id = $1", [sec_id])
+  .then(function({rows}) {
+    return {"status" : "Success"};
+
+  })
+  .catch((err) => {
+    throw { http: 400, code: "INVALID_ID", message: "User's Info of this ID does not exsist"};
+  });
+}
+
 
 //Create a new User Row
 function create(patch) {
@@ -51,5 +65,6 @@ function update(patch) {
 module.exports = {
     select,
     create,
-    update
+    update,
+    remove
   };

@@ -7,6 +7,7 @@ let selectByID = (user_id) => {
     .query("SELECT * FROM users where user_id = $1", [user_id])
     .then(function({rows}) {
       rows = normaliseString(rows[0])
+      console.log(rows)
       return rows;
     })
     .catch((err) => {
@@ -24,7 +25,7 @@ function createUser(patch) {
   console.log(modifier)
   return db
     .query(
-      `INSERT INTO users(user_id,name,school,rank,class,score,email,phone) VALUES (${modifier});`)
+      `INSERT INTO users(user_id, name, school, class, score, rank, email, phone) VALUES (${modifier});`)
     .then(function({ rows }) {
       return {"status" : "Success"};
     })

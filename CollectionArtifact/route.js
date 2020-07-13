@@ -1,6 +1,5 @@
 let router = require("express").Router();
 let Model = require("./model");
-let { isEmail } = require("validator");
 let { tokenValidator } = require("../Account/token");
 
 router.get("/:id1/:id2", tokenValidator, function(req, res, next) {
@@ -13,7 +12,7 @@ router.get("/:id1/:id2", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.get("/delete/:id1/:id2", tokenValidator, function(req, res, next) {
+router.delete("/:id1/:id2", tokenValidator, function(req, res, next) {
   let id1 = req.params.id1
   let id2 = req.params.id2
   Model.remove(id1,id2)
@@ -23,7 +22,7 @@ router.get("/delete/:id1/:id2", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.post("/create", tokenValidator, function(req, res, next) {
+router.post("/", tokenValidator, function(req, res, next) {
   console.log('in-asdasd')
   let allowedFields = ["clt_id", "arti_id"];
   let patch = {};
@@ -49,7 +48,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/update", tokenValidator, function(req, res, next) {
+router.put("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["clt_id", "arti_id"];
   let patch = {};
   try {

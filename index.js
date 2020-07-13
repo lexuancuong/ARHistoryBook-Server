@@ -1,18 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+require("dotenv").config();
 const app = express()
 
 let PORT = process.env.PORT || 3000;
-
-
-
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 )
-app.set("port", PORT)
 app.get('/', (request, response) => {
   response.json({ info: 'Node.js, Express, and Postgres API' })
 })
@@ -20,10 +17,10 @@ app.use("/api/account", require("./Account/account.route"));
 app.use("/api/user", require("./User/user.route"));
 
 
-app.use("/api/section-progress", require("./SectionProgress/section.route"));
-app.use("/api/activity-progress", require("./ActivityProgress/activity.route"));
-app.use("/api/section-status", require("./SectionStatus/section.route"));
-app.use("/api/activity-data", require("./ActivityData/activity.route"));
+app.use("/api/section-progress", require("./SectionProgress/route"));
+app.use("/api/activity-progress", require("./ActivityProgress/route"));
+app.use("/api/section-status", require("./SectionStatus/route"));
+app.use("/api/activity-data", require("./ActivityData/route"));
 app.use("/api/section-data", require("./SectionData/route"));
 app.use("/api/section-link", require("./SectionLink/route"));
 app.use("/api/lesson", require("./Lesson/route"));

@@ -13,7 +13,7 @@ router.get("/:id", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.get("/delete/:id", tokenValidator, function(req, res, next) {
+router.delete("/:id", tokenValidator, function(req, res, next) {
   let id = req.params.id
   let user_id = req.body.user_id
   Model.remove(id,user_id)
@@ -23,7 +23,7 @@ router.get("/delete/:id", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.post("/create", tokenValidator, function(req, res, next) {
+router.post("/", tokenValidator, function(req, res, next) {
   console.log('in-asdasd')
   let allowedFields = ["achv_id", "user_id"];
   let patch = {};
@@ -49,7 +49,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/update", tokenValidator, function(req, res, next) {
+router.put("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["achv_id", "user_id"];
   let patch = {};
   try {

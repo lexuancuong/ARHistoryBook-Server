@@ -50,7 +50,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/update", tokenValidator, function(req, res, next) {
+router.put("/update", tokenValidator, function(req, res, next) {
   let allowedFields = ["user_id", "name", "school", "class", "score","rank","email","phone"];
   let patch = {};
   try {

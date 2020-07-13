@@ -6,6 +6,7 @@ let { tokenValidator } = require("../Account/token");
 router.get("/:id", tokenValidator, function(req, res, next) {
   let id1 = req.body.user_id
   let id2 = req.params.id
+  console.log(id2)
   Model.select(id1,id2)
     .then(function(user){
       res.status(200).send(user);
@@ -13,7 +14,7 @@ router.get("/:id", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.get("/delete/:id", tokenValidator, function(req, res, next) {
+router.delete("/:id", tokenValidator, function(req, res, next) {
   let id1 = req.body.user_id
   let id2 = req.params.id
   Model.remove(id1,id2)
@@ -23,7 +24,7 @@ router.get("/delete/:id", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.post("/create", tokenValidator, function(req, res, next) {
+router.post("/", tokenValidator, function(req, res, next) {
   console.log('in-asdasd')
   let allowedFields = ["user_id", "accrit_id","count"];
   let patch = {};
@@ -49,7 +50,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/update", tokenValidator, function(req, res, next) {
+router.put("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["user_id", "accrit_id","count"];
   let patch = {};
   try {

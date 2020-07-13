@@ -13,7 +13,17 @@ router.get("/:id", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.post("/create", tokenValidator, function(req, res, next) {
+router.delete("/:id", tokenValidator, function(req, res, next) {
+  let id  = req.params.id;
+  console.log(id)
+  Model.remove(id)
+    .then(function(user){
+      res.status(200).send(user);
+    })
+    .catch(next);
+}); 
+
+router.post("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["id","name","lesson_id"];
   let patch = {};
   try {
@@ -38,7 +48,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/update", tokenValidator, function(req, res, next) {
+router.put("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["id","name","lesson_id"];
   let patch = {};
   try {

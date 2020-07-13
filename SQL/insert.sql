@@ -14,7 +14,7 @@ VALUES ('Accrit0001','Achv000001'),
 ('Accrit0002','Achv000003'),
 ('Accrit0003','Achv000003');
 
-INSERT INTO AcountAchievementCriterion(user_id,accrit_id,Count)
+INSERT INTO AccountAchievementCriterion(user_id,accrit_id,Count)
 VALUES ('0','Accrit0001',0),
 ('0','Accrit0002',0),
 ('0','Accrit0003',0);

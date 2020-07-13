@@ -16,11 +16,12 @@ router.post("/register", function(req, res, next) {
 });
 
 router.post("/login", function(req, res, next) {
+      //Get Username, password in body request that was sent from client
   let { username, password } = req.body;
   Account.login(username, password)
     .then(function(user) {
       res.status(200).send({
-        token: generateToken(username,user.user_id)
+        token: generateToken(username,user.user_id) //return token of user's login
       });
     })
     .catch(next);

@@ -1,7 +1,8 @@
 let db = require("../configs/db");
 let bcrypt = require("bcrypt");
 let { normaliseString } = require("../configs/type");
-function findByUsername(username) {
+
+let findByUsername = (username) => {
     return db
       .query("SELECT * FROM account where username = $1", [username])
       .then(function({rows}) {
@@ -17,7 +18,7 @@ function findByUsername(username) {
     });
 }
 
-function findIDByUsername(username) {
+let findIDByUsername = (username) => {
   return db
     .query("SELECT user_id FROM account where username = $1", [username])
     .then(function({rows}) {
@@ -32,7 +33,7 @@ function findIDByUsername(username) {
   });
 }
 
-function createAccount(username, password, type) {
+let createAccount = (username, password, type) => {
     username = username.trim()
     password = bcrypt.hashSync(password, 10);
     return db
@@ -50,7 +51,7 @@ function createAccount(username, password, type) {
       });
 }
 
-function login(username, password) {
+let login = (username, password) => {
   return db.query("SELECT * FROM account WHERE username=$1", [username])
   .then(function({ rows }) {
     if (rows.length !== 1) {
@@ -66,7 +67,7 @@ function login(username, password) {
   });
 }
 
-function updateAccount(username, password, type) {
+let updateAccount = (username, password, type) => {
   if (password == null || type == null){
     throw { http: 404, code: "INVALID_INFO", message: "Dont have enough parameter" };
   }

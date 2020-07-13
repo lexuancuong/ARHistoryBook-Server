@@ -1,6 +1,6 @@
 let db = require("../configs/db");
 let { normaliseString } = require("../configs/type");
-let { findIDByUsername } = require("../Account/account.model");
+
 let select = (clt_id,arti_id) => {
     return db
     .query("SELECT * FROM collectionartifact where clt_id = $1 AND arti_id = $2; ", [clt_id,arti_id])

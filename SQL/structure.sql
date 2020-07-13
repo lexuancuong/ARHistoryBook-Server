@@ -114,7 +114,7 @@ CREATE TABLE Grade(
     PRIMARY KEY (id)
 );
 
-CREATE TABLE AcountAchievementCriterion(
+CREATE TABLE AccountAchievementCriterion(
     user_id char(10), 
     accrit_id char(10),
     count int, 

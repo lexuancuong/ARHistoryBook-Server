@@ -1,12 +1,11 @@
 let jwt = require("jsonwebtoken");
 let { isString } = require("../configs/type");
-let { findIDByUsername } = require("./account.model");
 
-function generateToken(username,user_id) {
+function generateToken(username, user_id) {
     //generate a token by secret in .env file with expiration is 1 year
     let token = jwt.sign({ 'username': username , 'user_id': user_id}, process.env.SECRET, { expiresIn: "1y" });
     return token;
-  }
+}
 function extractInfo(req) {
     // Check if request contains token
     // Token may be contained in headers (for all users) or

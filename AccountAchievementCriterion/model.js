@@ -3,7 +3,7 @@ let { normaliseString } = require("../configs/type");
 let { findIDByUsername } = require("../Account/account.model");
 let select = (user_id,accrit_id) => {
     return db
-    .query("SELECT * FROM acountachievementcriterion where user_id = $1 AND accrit_id = $2; ", [user_id,accrit_id])
+    .query("SELECT * FROM accountachievementcriterion where user_id = $1 AND accrit_id = $2; ", [user_id,accrit_id])
     .then(function({rows}) {
       rows = normaliseString(rows[0])
       return rows;
@@ -13,9 +13,10 @@ let select = (user_id,accrit_id) => {
     });
 }
 
+
 let remove = (user_id,accrit_id) => {
   return db
-  .query("DELETE FROM acountachievementcriterion where user_id = $1 AND accrit_id = $2; ", [user_id,accrit_id])
+  .query("DELETE FROM accountachievementcriterion where user_id = $1 AND accrit_id = $2; ", [user_id,accrit_id])
   .then(function({rows}) {
     return {"status" : "Success"};
   })
@@ -34,7 +35,7 @@ function create(patch) {
   console.log(modifier)
   return db
     .query(
-      `INSERT INTO acountachievementcriterion(user_id,accrit_id,count) VALUES (${modifier});`)
+      `INSERT INTO accountachievementcriterion(user_id,accrit_id,count) VALUES (${modifier});`)
     .then(function({ rows }) {
       return {"status" : "Success"};
     })
@@ -55,7 +56,7 @@ function update(patch) {
 
   return db
     .query(
-      `UPDATE acountachievementcriterion SET ${modifier} WHERE (user_id = '${user_id}' AND accrit_id = '${accrit_id}') RETURNING *;`, 
+      `UPDATE accountachievementcriterion SET ${modifier} WHERE (user_id = '${user_id}' AND accrit_id = '${accrit_id}') RETURNING *;`, 
       Object.values(patch)
     )
     .then(function({ rows }) {

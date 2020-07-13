@@ -7,7 +7,6 @@ router.get("/:id1/:id2", tokenValidator, function(req, res, next) {
   let id1= req.params.id1;
   let id2= req.params.id2;
 
-  let sec_id = req.params.id;
   Model.select(id1,id2)
     .then(function(user){
       res.status(200).send(user);
@@ -15,8 +14,7 @@ router.get("/:id1/:id2", tokenValidator, function(req, res, next) {
     .catch(next);
 }); 
 
-router.post("/create", tokenValidator, function(req, res, next) {
-  console.log('asdasdasdasd9090')
+router.post("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["sec1_id","sec2_id"];
   let patch = {};
   try {
@@ -41,7 +39,7 @@ router.post("/create", tokenValidator, function(req, res, next) {
   })
 }); 
 
-router.post("/delete", tokenValidator, function(req, res, next) {
+router.delete("/", tokenValidator, function(req, res, next) {
   let allowedFields = ["sec1_id","sec2_id"];
   let patch = {};
   try {
