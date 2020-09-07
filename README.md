@@ -87,6 +87,11 @@ The APIs are deployed to https://arhistory.herokuapp.com/
     "rank":1,
 }
 ```
+
+- `GET /api/user/referral`: get referral code of user.
+
+- `GET /api/user/rank`: get list of user (include 2 fields: name and score)
+
 <hr>
 
 ### Another Tables
