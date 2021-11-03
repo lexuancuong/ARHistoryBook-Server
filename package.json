@@ -21,7 +21,7 @@
     "http": "0.0.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.18.1",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
